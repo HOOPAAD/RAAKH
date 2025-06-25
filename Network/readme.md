@@ -412,3 +412,13 @@ git push origin main
 
 This project is licensed under the **MIT License**.  
 See the [`LICENSE`](../LICENSE) file for details.
+
+---
+
+## 🙌 Credits & Maintainers
+
+This project is fully developed and maintained by the **HOOPAAD** organization.  
+All contributions, configurations, and deployments are part of the official HOOPAAD infrastructure and vision.
+
+For updates and future developments, visit the [HOOPAAD GitHub organization](https://github.com/HOOPAAD).
+
