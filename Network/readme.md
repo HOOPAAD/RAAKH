@@ -181,6 +181,7 @@ https://rpc.raakh.net
 
 > 📌 Make sure ports `80`, `443`, and `8545` are open and Docker is running.
 
+---
 
 ## 🔐 Step 6 – Set Up Nginx and SSL (rpc.raakh.net)
 
@@ -237,3 +238,32 @@ It should return a JSON-RPC response like:
 {"jsonrpc":"2.0","error":{"code":-32600,"message":"invalid request"},"id":null}
 ```
 
+### 7️⃣ Add RAAKH Devnet to MetaMask
+
+Once your node is live and the RPC endpoint is reachable, you can connect to it using MetaMask or any other EVM-compatible wallet.
+
+#### 🧭 Steps to Add Network in MetaMask:
+
+1. Open MetaMask.
+2. Click on your network dropdown (usually says "Ethereum Mainnet").
+3. Select **"Add Network"** or **"Add a network manually"**.
+4. Fill in the following fields:
+
+| Field             | Value                        |
+|-------------------|------------------------------|
+| Network Name      | RAAKH Devnet                 |
+| RPC URL           | `https://rpc.raakh.net`      |
+| Chain ID          | `919191`                     |
+| Currency Symbol   | `KHAS`                       |
+| Block Explorer URL| *(optional)*                 |
+
+5. Click **Save**.
+
+Once added, your MetaMask is connected to the RAAKH Devnet.  
+You can now:
+
+- Deploy and test contracts via [Remix](https://remix.ethereum.org).
+- Interact with tokens, NFTs, and bridges using standard Web3 tools.
+- Send and receive KHAS tokens on-chain.
+
+---
