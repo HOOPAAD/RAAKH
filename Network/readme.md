@@ -267,3 +267,143 @@ You can now:
 - Send and receive KHAS tokens on-chain.
 
 ---
+## ❗ Troubleshooting
+
+Even with a carefully crafted setup, unexpected issues may arise. Below are common problems and how to resolve them:
+
+---
+
+### 🔌 Kurtosis command not found
+
+**Issue**:
+```bash
+kurtosis: command not found
+```
+
+**Fix**:
+Make sure the Kurtosis binary is added to your PATH.
+
+```bash
+echo 'export PATH="$HOME/.kurtosis/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+---
+
+### 🧱 `optimism-package` folder not found
+
+**Issue**:
+```bash
+❗ Error: optimism-package folder not found in expected location.
+```
+
+**Fix**:
+Ensure the `optimism-package` directory exists one level up relative to the `install-raakh.sh` script:
+
+```
+raakh-network/
+├── install-raakh.sh
+└── ../optimism-package/
+```
+
+If it’s elsewhere, update the paths in `install-raakh.sh` accordingly.
+
+---
+
+### 🔒 Port already in use
+
+**Issue**:
+```bash
+Error: listen tcp 0.0.0.0:8545: bind: address already in use
+```
+
+**Fix**:
+Check which service is using the port:
+
+```bash
+sudo lsof -i :8545
+```
+
+Then stop the service or change the port in your configuration.
+
+---
+
+### 🌐 Nginx fails to reload
+
+**Issue**:
+```bash
+nginx: [emerg] invalid number of arguments in "server" directive...
+```
+
+**Fix**:
+Check for syntax errors in `nginx.conf`:
+
+```bash
+sudo nginx -t
+```
+
+Edit and fix the file, then reload nginx:
+
+```bash
+sudo systemctl reload nginx
+```
+
+---
+
+### 🔒 SSL certificate generation failed
+
+**Fix**:
+Ensure:
+- The domain (e.g., `rpc.raakh.net`) has an active A record pointing to the correct server IP.
+- Ports 80 and 443 are open.
+Then re-run:
+
+```bash
+sudo certbot --nginx -d rpc.raakh.net
+```
+
+---
+
+### 🧠 Kurtosis containers not launching
+
+**Fix**:
+Make sure the following files exist in the same folder as your `kurtosis.yml`:
+
+- `network_params.yaml`
+- Docker installed and running
+- Enough free disk space (`df -h`)
+
+---
+
+### 🔧 Geth or OP-node crashing
+
+Check logs:
+
+```bash
+docker ps
+docker logs <container-id>
+```
+
+Restart the container if needed, or rebuild using Kurtosis:
+
+```bash
+kurtosis clean --enclave raakhnet
+kurtosis run . --enclave raakhnet
+```
+
+---
+
+### ✅ Always verify folder structure
+
+Ensure all required files are in place:
+- `install-raakh.sh` in `raakh-network/`
+- `kurtosis.yml` + `network_params.yaml` in `optimism-package/`
+- All copied and pushed to GitHub properly
+```bash
+git status
+git add .
+git commit -m "add missing files"
+git push origin main
+```
+
+---
