@@ -238,7 +238,7 @@ It should return a JSON-RPC response like:
 {"jsonrpc":"2.0","error":{"code":-32600,"message":"invalid request"},"id":null}
 ```
 
-### 7️⃣ Add RAAKH Devnet to MetaMask
+### 🪪 Add RAAKH Devnet to MetaMask
 
 Once your node is live and the RPC endpoint is reachable, you can connect to it using MetaMask or any other EVM-compatible wallet.
 
