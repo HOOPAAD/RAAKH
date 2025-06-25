@@ -134,3 +134,50 @@ network/
 │
 └── README.md                     # Documentation and usage instructions
 ```
+---
+
+## 🛠 Installation & Usage
+
+To launch the RAAKH local network on your machine using the OP Stack and Kurtosis, follow these steps:
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/HOOPAAD/RAAKH.git
+cd RAAKH/network
+```
+
+### 2. Make the installer executable
+```bash
+chmod +x raakh-setup-files/install-raakh.sh
+```
+
+### 3. Run the installer
+This script installs all required dependencies and launches the network:
+```bash
+./raakh-setup-files/install-raakh.sh
+```
+
+The script will:
+- Install dependencies (`curl`, `git`, `docker`, `docker-compose`, etc.)
+- Install the [Kurtosis CLI](https://docs.kurtosis.com/)
+- Copy the config files from `optimism-package/` into the working directory
+- Launch the OP Stack using Kurtosis with the following configuration:
+  - `optimism-package/kurtosis.yml`
+  - `optimism-package/network_params.yaml`
+
+### 4. Access your RAAKH Node
+
+Once deployment completes, your local OP Stack network will be live and reachable at:
+
+```
+http://localhost:8545
+```
+
+If you're using reverse proxy via Nginx (`nginx.conf`), it can be configured for:
+
+```
+https://rpc.raakh.net
+```
+
+> 📌 Make sure ports `80`, `443`, and `8545` are open and Docker is running.
+
