@@ -123,7 +123,7 @@ The `network/` directory of the RAAKH repository is structured clearly and modul
 
 ```bash
 network/
-├── optimism-package/              # OP Stack orchestration configuration
+├── optimism-package/             # OP Stack orchestration configuration
 │   ├── kurtosis.yml              # Kurtosis runtime blueprint
 │   └── network_params.yaml       # Parameters for custom chain configuration
 │
@@ -183,7 +183,7 @@ https://rpc.raakh.net
 
 ---
 
-## 🔐 Step 6 – Set Up Nginx and SSL (rpc.raakh.net)
+## 🔐 Set Up Nginx and SSL (rpc.raakh.net)
 
 This section sets up a secure HTTPS reverse proxy for your RAAKH RPC endpoint.
 
