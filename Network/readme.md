@@ -117,24 +117,20 @@ Make sure the following files exist in the project before launching:
 
 ---
 
-## 📂 Folder Structure
+## 📁 Folder Structure
 
-To ensure modularity and clarity, the RAAKH Network repository is structured into two main directories:
-
-- `optimism-package/` contains Kurtosis configurations for orchestrating the OP Stack environment.
-- `raakh-setup-files/` includes essential setup scripts and configuration files needed to initialize and deploy the network.
+The `network/` directory of the RAAKH repository is structured clearly and modularly:
 
 ```bash
-raakh-network/
-├── optimism-package/              # Kurtosis orchestration blueprint for the OP Stack
-│   ├── kurtosis.yml              # Kurtosis runtime setup
+network/
+├── optimism-package/              # OP Stack orchestration configuration
+│   ├── kurtosis.yml              # Kurtosis runtime blueprint
 │   └── network_params.yaml       # Parameters for custom chain configuration
 │
-├── raakh-setup-files/            # Main setup files for the RAAKH node
-│   ├── genesis.json              # Genesis file used for Layer 2 initialization
-│   ├── install-raakh.sh          # Automated installer script (installs dependencies & runs Kurtosis)
-│   └── nginx.conf                # Nginx reverse proxy configuration (for rpc.raakh.net)
+├── raakh-setup-files/            # Core RAAKH setup components
+│   ├── genesis.json              # Genesis configuration for Layer 2 chain
+│   ├── install-raakh.sh          # Installer script for full environment setup
+│   └── nginx.conf                # Reverse proxy config (for rpc.raakh.net)
 │
 └── README.md                     # Documentation and usage instructions
 ```
-
