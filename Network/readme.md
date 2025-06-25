@@ -181,3 +181,59 @@ https://rpc.raakh.net
 
 > 📌 Make sure ports `80`, `443`, and `8545` are open and Docker is running.
 
+
+## 🔐 Step 6 – Set Up Nginx and SSL (rpc.raakh.net)
+
+This section sets up a secure HTTPS reverse proxy for your RAAKH RPC endpoint.
+
+---
+
+### 🧱 Install Nginx and Certbot
+
+```bash
+sudo apt update
+sudo apt install nginx certbot python3-certbot-nginx -y
+```
+
+---
+
+### 🔁 Replace Nginx Default Config with RAAKH Config
+
+```bash
+sudo cp raakh-setup-files/nginx.conf /etc/nginx/sites-available/rpc.raakh.net
+sudo ln -s /etc/nginx/sites-available/rpc.raakh.net /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+---
+
+### 🔒 Issue Free SSL Certificates
+
+```bash
+sudo certbot --nginx -d rpc.raakh.net
+```
+
+Follow the prompts from Certbot. Once complete, your domain will be SSL-enabled.
+
+---
+
+### ✅ Nginx with SSL is now ready.
+
+Your RPC endpoint will now be served securely at:
+
+```
+https://rpc.raakh.net
+```
+
+You can test it with `curl`:
+
+```bash
+curl https://rpc.raakh.net
+```
+
+It should return a JSON-RPC response like:
+
+```json
+{"jsonrpc":"2.0","error":{"code":-32600,"message":"invalid request"},"id":null}
+```
+
