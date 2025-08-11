@@ -8,10 +8,11 @@
 <style>
 /* ---------- Base ---------- */
 :root{
-  --bg:#0b0e14; --bg-2:#0f1320; --card:rgba(255,255,255,.06);
-  --glass:rgba(255,255,255,.08); --text:#e7ecff; --muted:#9aa3b2;
+  --bg:#0b0e14; --bg-2:#0f1320; --text:#e7ecff; --muted:#9aa3b2;
   --brand:#8cffda; --brand-2:#7aa7ff; --accent:#ff69b4;
-  --border:rgba(255,255,255,.12); --shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px var(--border);
+  --border:rgba(255,255,255,.12);
+  --glass:rgba(255,255,255,.08);
+  --shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px var(--border);
   --radius:18px;
 }
 *{box-sizing:border-box}
@@ -32,29 +33,39 @@ a:hover{color:#b7fff0}
 
 /* ---------- Navbar ---------- */
 .nav{
-  position:sticky; top:0; z-index:20;
+  position:sticky; top:0; z-index:40;
   backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, rgba(10,14,22,.85), rgba(10,14,22,.55));
   border-bottom:1px solid var(--border);
 }
-.nav .wrap{display:flex;align-items:center;gap:18px; padding:14px 0}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.4px}
-.badge{font-size:12px;padding:4px 10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#061015;font-weight:700}
-.nav a{color:var(--muted)} .nav a:hover{color:var(--text)} .spacer{flex:1}
-.nav .links{display:flex;gap:18px;align-items:center}
+.nav .wrap{display:flex;align-items:center;gap:14px; padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+.badge{font-size:12px;padding:4px 10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#061015;font-weight:800}
+.links{display:flex;gap:18px;align-items:center}
+.menu-btn{display:none;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);border-radius:10px;padding:8px 10px;font-weight:700}
+
+/* Mobile drawer */
+.drawer{
+  position:fixed; inset:0 0 auto auto; top:56px; right:12px;
+  width:calc(100% - 24px); max-width:380px;
+  background:rgba(12,16,26,.95); border:1px solid var(--border);
+  border-radius:14px; box-shadow:var(--shadow); padding:14px; display:none; z-index:50;
+}
+.drawer a{display:block; padding:10px 8px; color:var(--text); border-radius:8px}
+.drawer a:hover{background:rgba(255,255,255,.06)}
 
 /* ---------- Hero ---------- */
 .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--border)}
-.hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:center; padding:64px 0 48px;}
-.h1{font-size: clamp(32px, 4.5vw, 56px); line-height:1.05; margin:0 0 14px;
+.hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:center; padding:56px 0 42px;}
+.h1{font-size: clamp(30px, 4.2vw, 56px); line-height:1.05; margin:0 0 12px;
   background:linear-gradient(135deg,#fff, #cfe9ff 30%, #b0ffd7 65%, #ffd6f0);
-  -webkit-background-clip:text; background-clip:text; color:transparent;}
-.lead{font-size: clamp(16px,1.4vw,19px); color:var(--muted); margin-bottom:22px}
-.sublead{color:#c7d5ff; opacity:.9; font-size:15px; margin:12px 0 0}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{border:none; border-radius:14px; padding:12px 16px; font-weight:700; color:#061015; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 30px rgba(122,167,255,.25); cursor:pointer}
+  -webkit-background-clip:text; background-clip:text; color:transparent}
+.lead{font-size: clamp(15px,1.3vw,19px); color:var(--muted); margin-bottom:16px}
+.sublead{color:#c7d5ff; opacity:.9; font-size:14px; margin:10px 0 0}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn{border:none; border-radius:14px; padding:12px 16px; font-weight:800; color:#061015; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 30px rgba(122,167,255,.25); cursor:pointer}
 .btn.ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
-.hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--border); border-radius:18px; padding:16px; box-shadow:var(--shadow); margin-top:14px}
 
 /* ---------- Globe ---------- */
 .globe-wrap{position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden}
@@ -66,18 +77,17 @@ canvas#globe{width:100%;height:100%;display:block;background:
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ---------- Sections ---------- */
-section{padding:56px 0}
-.section-title{font-size:28px; margin:0 0 18px; letter-spacing:.2px}
-.grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr);}
-.card{grid-column: span 12; background:var(--glass); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+section{padding:48px 0}
+.section-title{font-size:26px; margin:0 0 16px; letter-spacing:.2px}
+.grid{display:grid; gap:16px; grid-template-columns: repeat(12, 1fr);}
+.card{grid-column: span 12; background:var(--glass); border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--shadow)}
 .card h3{margin:0 0 8px}
 .card p{margin:0 0 8px;color:var(--muted)}
-.kv{display:grid;grid-template-columns: 180px 1fr; gap:8px}
+.kv{display:grid;grid-template-columns: 160px 1fr; gap:8px}
 code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: #0f1524; color:#d5e4ff; border:1px solid #1a2340; border-radius:12px;}
 pre{padding:14px; overflow:auto; position:relative}
 .copy{position:absolute; top:8px; right:8px; font-size:12px; padding:6px 10px; border-radius:999px; background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#061015; border:none; cursor:pointer}
 
-/* responsive columns */
 @media (min-width:860px){
   .card.col-4{grid-column: span 4}
   .card.col-6{grid-column: span 6}
@@ -85,9 +95,20 @@ pre{padding:14px; overflow:auto; position:relative}
 }
 
 /* ---------- Footer ---------- */
-footer{padding:30px 0; color:var(--muted); border-top:1px solid var(--border); text-align:center}
+footer{padding:28px 0; color:var(--muted); border-top:1px solid var(--border); text-align:center}
 .small{font-size:13px;color:var(--muted)}
-hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
+hr.sep{border:none;border-top:1px solid var(--border);margin:24px 0}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width:860px){
+  .menu-btn{display:inline-block}
+  .links{display:none}             /* hide desktop links */
+  .hero-inner{grid-template-columns: 1fr; gap:18px;} /* stack hero */
+  .globe-wrap{max-width:520px; margin:8px auto 0}    /* big pretty globe under text */
+  .hero-card{margin-top:12px}      /* goal card full width */
+  .section-title{font-size:24px}
+  .kv{grid-template-columns: 1fr}  /* key-values vertical */
+}
 </style>
 </head>
 <body>
@@ -97,11 +118,13 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
 <nav class="nav">
   <div class="container wrap">
     <div class="brand">
-      <span style="font-size:20px">🪐</span><span>RAAKH Network</span>
+      <span style="font-size:20px">🪐</span><span>RAAKH</span>&nbsp;<span>Network</span>
       <span class="badge">OP Stack L2</span>
     </div>
     <div class="spacer"></div>
-    <div class="links">
+
+    <!-- Desktop links -->
+    <div class="links" id="deskLinks">
       <a href="#features">Features</a>
       <a href="#repo">What’s inside</a>
       <a href="#requirements">Requirements</a>
@@ -111,6 +134,21 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
       <a href="#troubleshoot">Troubleshoot</a>
       <a href="https://github.com/HOOPAAD/RAAKH" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
+
+    <!-- Mobile hamburger -->
+    <button class="menu-btn" id="menuBtn">☰ Menu</button>
+  </div>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer">
+    <a href="#features">Features</a>
+    <a href="#repo">What’s inside</a>
+    <a href="#requirements">Requirements</a>
+    <a href="#install">Install</a>
+    <a href="#rpc">RPC & Wallet</a>
+    <a href="#tools">Tools</a>
+    <a href="#troubleshoot">Troubleshoot</a>
+    <a href="https://github.com/HOOPAAD/RAAKH" target="_blank" rel="noreferrer">GitHub ↗</a>
   </div>
 </nav>
 
@@ -120,15 +158,14 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
     <div>
       <h1 class="h1">RAAKH — Ethereum L2 powered by OP Stack</h1>
       <p class="lead">
-        Reproducible, modular, and developer-friendly. Built for experimentation, education, and sovereign infra—spin up a full EVM chain with one script, secure RPC, and docs.
+        Reproducible, modular, and developer-friendly. Spin up a full EVM chain with one script, secure RPC, and detailed docs—built for experimentation, education, and sovereign infra.
       </p>
       <div class="cta">
         <a class="btn" href="#install">🚀 One-line Install</a>
         <a class="btn ghost" href="https://stack.optimism.io/" target="_blank" rel="noreferrer">OP Stack Docs</a>
       </div>
-      <p class="sublead">Everything from custom <code>genesis.json</code> to a Kurtosis-powered OP-Stack bundle, plus an SSL RPC gateway with Nginx &amp; Certbot.</p>
-      <div class="hero-card" style="margin-top:16px">
-        <strong>Goal:</strong> Enable devs & researchers to launch an OP-Stack L2 with zero DevOps pain.
+      <div class="hero-card">
+        <strong>Goal:</strong> Enable developers & researchers to launch their own OP-Stack L2 with zero DevOps hassle.
       </div>
     </div>
     <div class="globe-wrap hero-card">
@@ -143,13 +180,13 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
   <h2 class="section-title">🔧 Features</h2>
   <div class="grid">
     <div class="card col-6"><h3>✅ EVM Compatibility</h3><p>Runs on <code>op-geth</code>; deploy any Solidity contracts with standard tools.</p></div>
-    <div class="card col-6"><h3>🦊 Wallet Ready</h3><p>Add to MetaMask as a custom RPC and build instantly.</p></div>
-    <div class="card col-6"><h3>🚀 OP Stack</h3><p><code>op-node</code> + <code>op-geth</code> orchestrated by Kurtosis.</p></div>
-    <div class="card col-6"><h3>📦 One-Line Setup</h3><p>Spin up EL, batcher, proposer, bridge—containerized and reproducible.</p></div>
-    <div class="card col-6"><h3>🔐 SSL RPC</h3><p>Secure JSON-RPC via Nginx + Certbot at <code>https://rpc.raakh.net</code>.</p></div>
-    <div class="card col-6"><h3>🧪 Dev Genesis</h3><p>Pre-funded accounts & fast blocks for DX.</p></div>
-    <div class="card col-6"><h3>🧩 Forkable</h3><p>Tweak chain ID, block time, token meta, premine… make it yours.</p></div>
-    <div class="card col-6"><h3>📚 Detailed Docs</h3><p>Step-by-step guides for users with zero infra background.</p></div>
+    <div class="card col-6"><h3>🦊 Wallet Ready</h3><p>Add to MetaMask as a custom RPC and start building instantly.</p></div>
+    <div class="card col-6"><h3>🚀 OP Stack</h3><p><code>op-node</code> + <code>op-geth</code> orchestrated via Kurtosis.</p></div>
+    <div class="card col-6"><h3>📦 One-Line Setup</h3><p>Launch EL, batcher, proposer, bridge—containerized & reproducible.</p></div>
+    <div class="card col-6"><h3>🔐 SSL RPC</h3><p>Nginx + Certbot for secure JSON-RPC at <code>https://rpc.raakh.net</code>.</p></div>
+    <div class="card col-6"><h3>🧪 Dev Genesis</h3><p>Pre-funded accounts & fast blocks for a smooth DX.</p></div>
+    <div class="card col-6"><h3>🧩 Forkable</h3><p>Tweak chain ID, block time, token meta, premine—make it yours.</p></div>
+    <div class="card col-6"><h3>📚 Detailed Docs</h3><p>Step-by-step guides even if you’re new to infra.</p></div>
   </div>
 </section>
 
@@ -236,18 +273,6 @@ cd RAAKH/network</code></pre>
 <pre><button class="copy" data-copy="c5">Copy</button><code id="c5">https://rpc.raakh.net</code></pre>
     </div>
     <div class="card col-12">
-      <h3>Nginx & SSL</h3>
-<pre><button class="copy" data-copy="c6">Copy</button><code id="c6">sudo apt update
-sudo apt install nginx certbot python3-certbot-nginx -y
-
-sudo cp raakh-setup-files/nginx.conf /etc/nginx/sites-available/rpc.raakh.net
-sudo ln -s /etc/nginx/sites-available/rpc.raakh.net /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl reload nginx
-
-sudo certbot --nginx -d rpc.raakh.net</code></pre>
-    </div>
-
-    <div class="card col-12">
       <h3>Add to MetaMask</h3>
       <div class="kv">
         <div>Network Name</div><div>RAAKH Devnet</div>
@@ -301,15 +326,20 @@ kurtosis run . --enclave raakhnet</code></pre>
 </footer>
 
 <script>
+/* ---------- Mobile drawer ---------- */
+const menuBtn = document.getElementById('menuBtn');
+const drawer  = document.getElementById('drawer');
+const toggle = () => drawer.style.display = (drawer.style.display==='block'?'none':'block');
+menuBtn.addEventListener('click', toggle);
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>drawer.style.display='none'));
+
 /* ---------- Copy buttons ---------- */
 document.querySelectorAll('.copy').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const id = btn.getAttribute('data-copy');
     const el = document.getElementById(id);
     navigator.clipboard.writeText(el.innerText.trim()).then(()=>{
-      const txt = btn.textContent;
-      btn.textContent='Copied ✓';
-      setTimeout(()=>btn.textContent=txt,1200);
+      const txt = btn.textContent; btn.textContent='Copied ✓'; setTimeout(()=>btn.textContent=txt,1200);
     });
   });
 });
@@ -390,7 +420,7 @@ document.getElementById('y').textContent=new Date().getFullYear();
         ctx.strokeStyle="rgba(122,167,255,.55)"; ctx.stroke();
       }
     }
-    for(let i=0;i<40;i++){
+    for(let i=0;i<36;i++){
       const lat = (Math.random()*140-70);
       const lon = (Math.random()*360-180);
       const p = latLngToXY(lat,lon,rot);
