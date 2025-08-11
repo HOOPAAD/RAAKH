@@ -7,19 +7,11 @@
 <meta name="description" content="RAAKH is a reproducible, developer-friendly Layer 2 blockchain built on Optimism's OP Stack.">
 <style>
 /* ---------- Base ---------- */
-  
 :root{
-  --bg:#0b0e14;
-  --bg-2:#0f1320;
-  --card:rgba(255,255,255,.06);
-  --glass:rgba(255,255,255,.08);
-  --text:#e7ecff;
-  --muted:#9aa3b2;
-  --brand:#8cffda;          /* mint neon */
-  --brand-2:#7aa7ff;        /* blue neon  */
-  --accent:#ff69b4;         /* hot pink   */
-  --border:rgba(255,255,255,.12);
-  --shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px var(--border);
+  --bg:#0b0e14; --bg-2:#0f1320; --card:rgba(255,255,255,.06);
+  --glass:rgba(255,255,255,.08); --text:#e7ecff; --muted:#9aa3b2;
+  --brand:#8cffda; --brand-2:#7aa7ff; --accent:#ff69b4;
+  --border:rgba(255,255,255,.12); --shadow:0 10px 40px rgba(0,0,0,.45), inset 0 0 0 1px var(--border);
   --radius:18px;
 }
 *{box-sizing:border-box}
@@ -32,8 +24,7 @@ a:hover{color:#b7fff0}
 .stars, .stars:before, .stars:after{
   position:fixed;inset:0;content:"";
   background:transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3"><circle cx="1.5" cy="1.5" r="1" fill="white" /></svg>') repeat;
-  opacity:.08; animation: drift 120s linear infinite;
-  pointer-events:none;
+  opacity:.08; animation: drift 120s linear infinite; pointer-events:none;
 }
 .stars:before{opacity:.05;transform:scale(1.4);animation-duration:180s}
 .stars:after{opacity:.04;transform:scale(1.8);animation-duration:240s}
@@ -47,87 +38,44 @@ a:hover{color:#b7fff0}
   border-bottom:1px solid var(--border);
 }
 .nav .wrap{display:flex;align-items:center;gap:18px; padding:14px 0}
-.brand{
-  display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.4px
-}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.4px}
 .badge{font-size:12px;padding:4px 10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#061015;font-weight:700}
-.nav a{color:var(--muted)}
-.nav a:hover{color:var(--text)}
-.spacer{flex:1}
+.nav a{color:var(--muted)} .nav a:hover{color:var(--text)} .spacer{flex:1}
 .nav .links{display:flex;gap:18px;align-items:center}
 
 /* ---------- Hero ---------- */
-.hero{
-  position:relative; overflow:hidden;
-  border-bottom:1px solid var(--border);
-}
-.hero-inner{
-  display:grid; grid-template-columns: 1.2fr .8fr; gap:24px;
-  align-items:center; padding:64px 0 48px;
-}
-.h1{
-  font-size: clamp(32px, 4.5vw, 56px);
-  line-height:1.05; margin:0 0 14px;
+.hero{position:relative; overflow:hidden; border-bottom:1px solid var(--border)}
+.hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:center; padding:64px 0 48px;}
+.h1{font-size: clamp(32px, 4.5vw, 56px); line-height:1.05; margin:0 0 14px;
   background:linear-gradient(135deg,#fff, #cfe9ff 30%, #b0ffd7 65%, #ffd6f0);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow: 0 0 0 rgba(0,0,0,0);
-}
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
 .lead{font-size: clamp(16px,1.4vw,19px); color:var(--muted); margin-bottom:22px}
+.sublead{color:#c7d5ff; opacity:.9; font-size:15px; margin:12px 0 0}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  border:none; border-radius:14px; padding:12px 16px; font-weight:700;
-  color:#061015; background:linear-gradient(135deg,var(--brand),var(--brand-2));
-  box-shadow:0 8px 30px rgba(122,167,255,.25);
-  cursor:pointer
-}
-.btn.ghost{
-  background:transparent; color:var(--text); border:1px solid var(--border)
-}
-.hero-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid var(--border); border-radius:var(--radius); padding:16px;
-  box-shadow:var(--shadow)
-}
+.btn{border:none; border-radius:14px; padding:12px 16px; font-weight:700; color:#061015; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 8px 30px rgba(122,167,255,.25); cursor:pointer}
+.btn.ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
 
-/* ---------- Globe Canvas Card ---------- */
-.globe-wrap{
-  position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden;
-}
+/* ---------- Globe ---------- */
+.globe-wrap{position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden}
 canvas#globe{width:100%;height:100%;display:block;background:
   radial-gradient(120% 90% at 30% 20%, rgba(122,167,255,.18), rgba(255,105,180,.15) 40%, transparent 70%);}
-.glow{
-  position:absolute; inset:-40%; filter:blur(60px); opacity:.3;
+.glow{position:absolute; inset:-40%; filter:blur(60px); opacity:.3;
   background: conic-gradient(from 120deg at 50% 50%, rgba(124,255,218,.7), rgba(122,167,255,.7), rgba(255,105,180,.6), rgba(124,255,218,.7));
-  animation: spin 18s linear infinite;
-}
+  animation: spin 18s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ---------- Sections ---------- */
 section{padding:56px 0}
-.section-title{
-  font-size:28px; margin:0 0 18px; letter-spacing:.2px
-}
-.grid{
-  display:grid; gap:18px;
-  grid-template-columns: repeat(12, 1fr);
-}
-.card{
-  grid-column: span 12;
-  background:var(--glass); border:1px solid var(--border);
-  border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
-}
+.section-title{font-size:28px; margin:0 0 18px; letter-spacing:.2px}
+.grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr);}
+.card{grid-column: span 12; background:var(--glass); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
 .card h3{margin:0 0 8px}
 .card p{margin:0 0 8px;color:var(--muted)}
 .kv{display:grid;grid-template-columns: 180px 1fr; gap:8px}
-code, pre{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  background: #0f1524; color:#d5e4ff; border:1px solid #1a2340; border-radius:12px;
-}
+code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: #0f1524; color:#d5e4ff; border:1px solid #1a2340; border-radius:12px;}
 pre{padding:14px; overflow:auto; position:relative}
-.copy{
-  position:absolute; top:8px; right:8px; font-size:12px; padding:6px 10px; border-radius:999px;
-  background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#061015; border:none; cursor:pointer
-}
+.copy{position:absolute; top:8px; right:8px; font-size:12px; padding:6px 10px; border-radius:999px; background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#061015; border:none; cursor:pointer}
 
 /* responsive columns */
 @media (min-width:860px){
@@ -137,10 +85,7 @@ pre{padding:14px; overflow:auto; position:relative}
 }
 
 /* ---------- Footer ---------- */
-footer{
-  padding:30px 0; color:var(--muted); border-top:1px solid var(--border);
-  text-align:center
-}
+footer{padding:30px 0; color:var(--muted); border-top:1px solid var(--border); text-align:center}
 .small{font-size:13px;color:var(--muted)}
 hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
 </style>
@@ -158,9 +103,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
     <div class="spacer"></div>
     <div class="links">
       <a href="#features">Features</a>
+      <a href="#repo">What’s inside</a>
       <a href="#requirements">Requirements</a>
       <a href="#install">Install</a>
       <a href="#rpc">RPC & Wallet</a>
+      <a href="#tools">Tools</a>
       <a href="#troubleshoot">Troubleshoot</a>
       <a href="https://github.com/HOOPAAD/RAAKH" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
@@ -173,15 +120,15 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
     <div>
       <h1 class="h1">RAAKH — Ethereum L2 powered by OP Stack</h1>
       <p class="lead">
-        A reproducible, developer-friendly Layer 2 for experimentation, education, and sovereign infra.
-        Spin up an EVM-compatible chain end-to-end with one script, secure RPC, and detailed docs.
+        Reproducible, modular, and developer-friendly. Built for experimentation, education, and sovereign infra—spin up a full EVM chain with one script, secure RPC, and docs.
       </p>
       <div class="cta">
         <a class="btn" href="#install">🚀 One-line Install</a>
-        <a class="btn ghost" href="https://github.com/HOOPAAD/RAAKH" target="_blank" rel="noreferrer">View on GitHub</a>
+        <a class="btn ghost" href="https://stack.optimism.io/" target="_blank" rel="noreferrer">OP Stack Docs</a>
       </div>
+      <p class="sublead">Everything from custom <code>genesis.json</code> to a Kurtosis-powered OP-Stack bundle, plus an SSL RPC gateway with Nginx &amp; Certbot.</p>
       <div class="hero-card" style="margin-top:16px">
-        <strong>Goal:</strong> Enable developers & researchers to launch their own OP-Stack L2 with zero DevOps hassle.
+        <strong>Goal:</strong> Enable devs & researchers to launch an OP-Stack L2 with zero DevOps pain.
       </div>
     </div>
     <div class="globe-wrap hero-card">
@@ -195,38 +142,25 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
 <section id="features" class="container">
   <h2 class="section-title">🔧 Features</h2>
   <div class="grid">
-    <div class="card col-6">
-      <h3>✅ EVM Compatibility</h3>
-      <p>Runs on <code>op-geth</code>. Deploy any Solidity contracts with standard tooling.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🦊 MetaMask Integration</h3>
-      <p>Add as a custom network and start building instantly.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🧱 Token & NFT</h3>
-      <p>ERC-20 / ERC-721 workflows with Remix, Hardhat, Truffle, and more.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🚀 OP Stack Architecture</h3>
-      <p>Uses <code>op-node</code>, <code>op-geth</code> orchestrated via Kurtosis configs.</p>
-    </div>
-    <div class="card col-6">
-      <h3>📦 One-Line Setup</h3>
-      <p>Boot everything with Kurtosis. Minimal prep, reproducible results.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🔐 SSL-Enabled RPC</h3>
-      <p>Nginx + Certbot for secure JSON-RPC at <code>https://rpc.raakh.net</code>.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🧪 Dev-ready Genesis</h3>
-      <p>Preconfigured <code>genesis.json</code> with funded test accounts & fast blocks.</p>
-    </div>
-    <div class="card col-6">
-      <h3>🧩 Forkable by Design</h3>
-      <p>Tweak chain ID, token meta, block times—make it your own L2.</p>
-    </div>
+    <div class="card col-6"><h3>✅ EVM Compatibility</h3><p>Runs on <code>op-geth</code>; deploy any Solidity contracts with standard tools.</p></div>
+    <div class="card col-6"><h3>🦊 Wallet Ready</h3><p>Add to MetaMask as a custom RPC and build instantly.</p></div>
+    <div class="card col-6"><h3>🚀 OP Stack</h3><p><code>op-node</code> + <code>op-geth</code> orchestrated by Kurtosis.</p></div>
+    <div class="card col-6"><h3>📦 One-Line Setup</h3><p>Spin up EL, batcher, proposer, bridge—containerized and reproducible.</p></div>
+    <div class="card col-6"><h3>🔐 SSL RPC</h3><p>Secure JSON-RPC via Nginx + Certbot at <code>https://rpc.raakh.net</code>.</p></div>
+    <div class="card col-6"><h3>🧪 Dev Genesis</h3><p>Pre-funded accounts & fast blocks for DX.</p></div>
+    <div class="card col-6"><h3>🧩 Forkable</h3><p>Tweak chain ID, block time, token meta, premine… make it yours.</p></div>
+    <div class="card col-6"><h3>📚 Detailed Docs</h3><p>Step-by-step guides for users with zero infra background.</p></div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section id="repo" class="container">
+  <h2 class="section-title">📘 What’s inside the repo</h2>
+  <div class="grid">
+    <div class="card col-6"><h3>Configs</h3><p><code>genesis.json</code>, <code>kurtosis.yml</code>, <code>network_params.yaml</code></p></div>
+    <div class="card col-6"><h3>Installer</h3><p><code>install-raakh.sh</code> — one-shot setup & launch</p></div>
+    <div class="card col-6"><h3>Gateway</h3><p>Nginx reverse proxy with SSL (Certbot)</p></div>
+    <div class="card col-6"><h3>Dockerized</h3><p>All services isolated; no dependency hell</p></div>
   </div>
 </section>
 
@@ -252,10 +186,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:28px 0}
         <div>SSL</div><div>Certbot via Nginx</div>
       </div>
     </div>
-    <div class="card col-12">
-      <h3>Tools</h3>
-      <p><code>curl, git, docker, docker-compose, nginx, certbot, bash, systemd, Kurtosis CLI</code></p>
-    </div>
+    <div class="card col-12"><h3>Tools</h3><p><code>curl, git, docker, docker-compose, nginx, certbot, bash, systemd, Kurtosis CLI</code></p></div>
   </div>
   <hr class="sep" />
   <div class="card">
@@ -289,7 +220,7 @@ cd RAAKH/network</code></pre>
     <div class="card col-12">
       <h3>Run Installer</h3>
 <pre><button class="copy" data-copy="c3">Copy</button><code id="c3">./raakh-setup-files/install-raakh.sh</code></pre>
-      <p class="small">This installs dependencies, Kurtosis CLI, copies configs, and launches OP-Stack.</p>
+      <p class="small">Installs deps, Kurtosis CLI, copies configs, and launches the OP-Stack enclave.</p>
     </div>
   </div>
 </section>
@@ -298,15 +229,12 @@ cd RAAKH/network</code></pre>
 <section id="rpc" class="container">
   <h2 class="section-title">🔐 RPC & Wallet</h2>
   <div class="grid">
-    <div class="card col-6">
-      <h3>Local</h3>
+    <div class="card col-6"><h3>Local RPC</h3>
 <pre><button class="copy" data-copy="c4">Copy</button><code id="c4">http://localhost:8545</code></pre>
     </div>
-    <div class="card col-6">
-      <h3>Reverse Proxy</h3>
+    <div class="card col-6"><h3>Reverse Proxy</h3>
 <pre><button class="copy" data-copy="c5">Copy</button><code id="c5">https://rpc.raakh.net</code></pre>
     </div>
-
     <div class="card col-12">
       <h3>Nginx & SSL</h3>
 <pre><button class="copy" data-copy="c6">Copy</button><code id="c6">sudo apt update
@@ -332,26 +260,33 @@ sudo certbot --nginx -d rpc.raakh.net</code></pre>
   </div>
 </section>
 
+<!-- TOOLS (links only) -->
+<section id="tools" class="container">
+  <h2 class="section-title">🧰 RAAKH Tools</h2>
+  <div class="grid">
+    <a class="card col-6" href="/Tools/Explorer/" style="text-decoration:none"><h3>🔎 Explorer</h3></a>
+    <a class="card col-6" href="/Tools/NFTShop/" style="text-decoration:none"><h3>🖼️ NFTShop</h3></a>
+    <a class="card col-6" href="/Tools/TokenFactory/" style="text-decoration:none"><h3>🧪 TokenFactory</h3></a>
+    <a class="card col-6" href="/Tools/TokenShop/" style="text-decoration:none"><h3>🛒 TokenShop</h3></a>
+  </div>
+</section>
+
 <!-- Troubleshoot -->
 <section id="troubleshoot" class="container">
   <h2 class="section-title">❗ Troubleshooting</h2>
   <div class="grid">
-    <div class="card col-6">
-      <h3>Kurtosis not found</h3>
+    <div class="card col-6"><h3>Kurtosis not found</h3>
 <pre><button class="copy" data-copy="c7">Copy</button><code id="c7">echo 'export PATH="$HOME/.kurtosis/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc</code></pre>
     </div>
-    <div class="card col-6">
-      <h3>Port 8545 in use</h3>
+    <div class="card col-6"><h3>Port 8545 in use</h3>
 <pre><button class="copy" data-copy="c8">Copy</button><code id="c8">sudo lsof -i :8545</code></pre>
     </div>
-    <div class="card col-6">
-      <h3>Nginx reload error</h3>
+    <div class="card col-6"><h3>Nginx reload error</h3>
 <pre><button class="copy" data-copy="c9">Copy</button><code id="c9">sudo nginx -t
 sudo systemctl reload nginx</code></pre>
     </div>
-    <div class="card col-6">
-      <h3>Clean & re-run</h3>
+    <div class="card col-6"><h3>Clean & re-run</h3>
 <pre><button class="copy" data-copy="c10">Copy</button><code id="c10">kurtosis clean --enclave raakhnet
 kurtosis run . --enclave raakhnet</code></pre>
     </div>
@@ -380,7 +315,7 @@ document.querySelectorAll('.copy').forEach(btn=>{
 });
 document.getElementById('y').textContent=new Date().getFullYear();
 
-/* ---------- Minimal rotating "sexy" planet (no external libs) ---------- */
+/* ---------- Minimal rotating planet ---------- */
 (function(){
   const canvas = document.getElementById('globe');
   const ctx = canvas.getContext('2d');
@@ -404,7 +339,7 @@ document.getElementById('y').textContent=new Date().getFullYear();
     const x3 = Math.cos(lat*rad) * Math.cos((lon+rot)*rad);
     const y3 = Math.sin(lat*rad);
     const z3 = Math.cos(lat*rad) * Math.sin((lon+rot)*rad);
-    const f = 1/(1+z3*0.9); // simple perspective
+    const f = 1/(1+z3*0.9);
     return {x: x3*r*f, y: y3*r*f, z:z3, f};
   }
 
@@ -412,14 +347,12 @@ document.getElementById('y').textContent=new Date().getFullYear();
     const rect = canvas.getBoundingClientRect();
     ctx.clearRect(0,0,rect.width,rect.height);
 
-    // soft halo
     const cx = rect.width/2, cy = rect.height/2;
     const g = ctx.createRadialGradient(cx,cy, r*0.6, cx,cy,r*1.15);
     g.addColorStop(0,"rgba(124,255,218,.25)");
     g.addColorStop(1,"rgba(10,14,22,0)");
     ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,r*1.1,0,Math.PI*2); ctx.fill();
 
-    // sphere body (shaded)
     const g2 = ctx.createRadialGradient(cx-r*0.4, cy-r*0.4, r*0.2, cx,cy, r);
     g2.addColorStop(0,"rgba(255,255,255,.85)");
     g2.addColorStop(0.35,"rgba(200,240,255,.45)");
@@ -429,12 +362,10 @@ document.getElementById('y').textContent=new Date().getFullYear();
 
     ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill(); ctx.stroke();
 
-    // longitude/latitude wireframe
     ctx.save(); ctx.translate(cx,cy);
-    const rot = t*0.5; // degrees
-    ctx.lineWidth=0.8; 
+    const rot = t*0.5;
+    ctx.lineWidth=0.8;
 
-    // latitudes
     for(let lat=-60; lat<=60; lat+=15){
       const pts=[];
       for(let lon=-180; lon<=180; lon+=6){
@@ -443,15 +374,10 @@ document.getElementById('y').textContent=new Date().getFullYear();
       }
       if(pts.length>1){
         ctx.beginPath();
-        for(let i=0;i<pts.length;i++){
-          const a=pts[i];
-          if(i===0) ctx.moveTo(a.x,a.y); else ctx.lineTo(a.x,a.y);
-        }
-        ctx.strokeStyle="rgba(140,255,218,.55)";
-        ctx.stroke();
+        for(let i=0;i<pts.length;i++){ const a=pts[i]; if(i===0) ctx.moveTo(a.x,a.y); else ctx.lineTo(a.x,a.y); }
+        ctx.strokeStyle="rgba(140,255,218,.55)"; ctx.stroke();
       }
     }
-    // longitudes
     for(let lon=-180; lon<180; lon+=15){
       const pts=[];
       for(let lat=-80; lat<=80; lat+=4){
@@ -460,15 +386,10 @@ document.getElementById('y').textContent=new Date().getFullYear();
       }
       if(pts.length>1){
         ctx.beginPath();
-        for(let i=0;i<pts.length;i++){
-          const a=pts[i];
-          if(i===0) ctx.moveTo(a.x,a.y); else ctx.lineTo(a.x,a.y);
-        }
-        ctx.strokeStyle="rgba(122,167,255,.55)";
-        ctx.stroke();
+        for(let i=0;i<pts.length;i++){ const a=pts[i]; if(i===0) ctx.moveTo(a.x,a.y); else ctx.lineTo(a.x,a.y); }
+        ctx.strokeStyle="rgba(122,167,255,.55)"; ctx.stroke();
       }
     }
-    // sparkle dots
     for(let i=0;i<40;i++){
       const lat = (Math.random()*140-70);
       const lon = (Math.random()*360-180);
