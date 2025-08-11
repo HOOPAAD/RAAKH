@@ -17,8 +17,10 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:radial-gradient(1200px 800px at 80% -10%, #171b2a 0%, #0c101b 50%, var(--bg) 100%);color:var(--text);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue","Noto Sans",Arial;}
-a{color:var(--brand);text-decoration:none}
-a:hover{color:#b7fff0}
+
+/* LINKS — سفید، هاور سبز */
+a{color:var(--text);text-decoration:none}
+a:hover{color:var(--brand)}
 .container{width:min(1200px,92%);margin:auto}
 
 /* ---------- Starfield ---------- */
@@ -39,9 +41,16 @@ a:hover{color:#b7fff0}
   border-bottom:1px solid var(--border);
 }
 .nav .wrap{display:flex;align-items:center;gap:14px; padding:12px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+
+/* برند و بج */
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px;flex-wrap:nowrap}
+.brand span{white-space:nowrap}
 .badge{font-size:12px;padding:4px 10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#061015;font-weight:800}
-.links{display:flex;gap:18px;align-items:center}
+
+/* لینک‌های نوار بالا کنار برند (spacer حذف) */
+.nav .wrap .spacer{display:none}
+.links{display:flex;gap:18px;align-items:center;margin-left:14px}
+
 .menu-btn{display:none;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);border-radius:10px;padding:8px 10px;font-weight:700}
 
 /* Mobile drawer */
@@ -99,15 +108,23 @@ footer{padding:28px 0; color:var(--muted); border-top:1px solid var(--border); t
 .small{font-size:13px;color:var(--muted)}
 hr.sep{border:none;border-top:1px solid var(--border);margin:24px 0}
 
+/* ---------- Tools links: سفید و وسط‌چین عمودی ---------- */
+#tools .card{display:flex;align-items:center;color:var(--text)}
+#tools .card h3{margin:0;color:var(--text)}
+
 /* ---------- Mobile tweaks ---------- */
 @media (max-width:860px){
   .menu-btn{display:inline-block}
   .links{display:none}             /* hide desktop links */
   .hero-inner{grid-template-columns: 1fr; gap:18px;} /* stack hero */
-  .globe-wrap{max-width:520px; margin:8px auto 0}    /* big pretty globe under text */
+  .globe-wrap{max-width:520px; margin:8px auto 0}    /* globe زیر متن */
   .hero-card{margin-top:12px}      /* goal card full width */
   .section-title{font-size:24px}
   .kv{grid-template-columns: 1fr}  /* key-values vertical */
+
+  /* Badge و برند روی موبایل مرتب و یک‌خط */
+  .brand{gap:6px}
+  .badge{font-size:11px;padding:4px 8px;white-space:nowrap;line-height:1}
 }
 </style>
 </head>
